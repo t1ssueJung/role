@@ -1,0 +1,6 @@
+{
+  "name": "우리 반 1인 1역할 배정기",
+  "description": "초등학생 눈높이에 맞춘 귀엽고 산뜻한 학급 1인 1역할 자동 배정 웹 애플리케이션입니다. 1:1 랜덤 매칭, 교실 게시판 부착용 A4 인쇄, 구글 스프레드시트 연동 준비 기능을 제공합니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,1247 @@
+/* ==========================================================================
+   우리 반 1인 1역할 배정기 - style.css
+   초등학생 눈높이에 맞춘 따뜻하고 산뜻한 파스텔톤 감성 스타일시트
+   + 교실 게시판 부착용 완벽 A4 인쇄 스타일 (@media print)
+   ========================================================================== */
+
+/* 1. 디자인 시스템 변수 */
+:root {
+  --font-family-display: 'Jua', 'Noto Sans KR', sans-serif;
+  --font-family-body: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* 파스텔톤 테마 팔레트 */
+  --bg-page: #FFFDF9;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F7F5F0;
+  --border-subtle: #EBE5DB;
+  --border-strong: #D6CEC2;
+
+  --text-main: #2C3E50;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+
+  /* 역할 카드별 산뜻한 파스텔 색조 (6가지 순환) */
+  --card-pastel-mint: #E8F8F5;
+  --card-border-mint: #A3E4D7;
+  --card-accent-mint: #16A085;
+
+  --card-pastel-sun: #FEF9E7;
+  --card-border-sun: #F9E79F;
+  --card-accent-sun: #D4AC0D;
+
+  --card-pastel-sky: #EBF5FB;
+  --card-border-sky: #AED6F1;
+  --card-accent-sky: #2980B9;
+
+  --card-pastel-peach: #FBEEE6;
+  --card-border-peach: #F5CBA7;
+  --card-accent-peach: #D35400;
+
+  --card-pastel-lavender: #F4ECF7;
+  --card-border-lavender: #D7BDE2;
+  --card-accent-lavender: #8E44AD;
+
+  --card-pastel-coral: #FDEDEC;
+  --card-border-coral: #FADBD8;
+  --card-accent-coral: #C0392B;
+
+  /* 주요 포인트 색상 */
+  --primary-color: #FF7675;
+  --primary-hover: #E84118;
+  --primary-shadow: rgba(255, 118, 117, 0.35);
+
+  --secondary-color: #74B9FF;
+  --secondary-hover: #0984E3;
+
+  --sheet-color: #00B894;
+  --sheet-hover: #00947A;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --radius-pill: 9999px;
+
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* 기본 리셋 및 글로벌 스타일 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. 헤더 네비게이션 영역 */
+.app-header {
+  background-color: var(--bg-surface);
+  border-bottom: 2px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand-zone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.brand-title {
+  font-family: var(--font-family-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #2D3436;
+  letter-spacing: -0.02em;
+}
+
+.class-tag {
+  background-color: #FFF3CD;
+  color: #856404;
+  border: 1.5px dashed #FFEBAA;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.class-tag:hover {
+  background-color: #FFE69C;
+  transform: scale(1.05);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-family-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-subtle);
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-sheet-import {
+  background-color: #E8F8F5;
+  border-color: #A3E4D7;
+  color: #0E6251;
+}
+.btn-sheet-import:hover {
+  background-color: #D1F2EB;
+}
+
+.btn-sheet-export {
+  background-color: #EBF5FB;
+  border-color: #AED6F1;
+  color: #1B4F72;
+}
+.btn-sheet-export:hover {
+  background-color: #D4E6F1;
+}
+
+.btn-print {
+  background-color: #FEF9E7;
+  border-color: #F9E79F;
+  color: #7D6608;
+}
+.btn-print:hover {
+  background-color: #FCF3CF;
+}
+
+.btn-manage {
+  background-color: #F4ECF7;
+  border-color: #D7BDE2;
+  color: #512E5F;
+}
+.btn-manage:hover {
+  background-color: #E8DAEF;
+}
+
+/* 3. 메인 콘텐츠 및 히어로 컨트롤 배너 */
+.main-content {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 24px 60px;
+}
+
+.hero-control-panel {
+  margin-bottom: 20px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #FFF9F2 0%, #FFF2F2 100%);
+  border: 2px solid #FFE4D6;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "✨";
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  font-size: 2.5rem;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.stat-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-label {
+  font-weight: 500;
+  color: #718096;
+}
+
+.stat-val {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.stat-val.highlight {
+  color: #E17055;
+  background-color: #FFEAA7;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.stat-divider {
+  color: var(--border-strong);
+  font-weight: bold;
+}
+
+.hero-heading {
+  font-family: var(--font-family-display);
+  font-size: 1.85rem;
+  color: #2D3748;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.hero-subtext {
+  font-size: 0.96rem;
+  color: #4A5568;
+}
+
+.hero-action-cluster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* 메인 배정 버튼 (크고 경쾌한 주사위 버튼) */
+.btn-primary-roll {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #FF7675 0%, #D63031 100%);
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--font-family-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  box-shadow: 0 8px 24px var(--primary-shadow);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  letter-spacing: 0.02em;
+}
+
+.btn-primary-roll:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(214, 48, 49, 0.45);
+}
+
+.btn-primary-roll:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.dice-bounce {
+  font-size: 1.7rem;
+  display: inline-block;
+  animation: diceWiggle 3s infinite ease-in-out;
+}
+
+@keyframes diceWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-12deg) scale(1.1); }
+  75% { transform: rotate(12deg) scale(1.1); }
+}
+
+.btn-primary-roll.rolling .dice-bounce {
+  animation: diceSpin 0.5s infinite linear;
+}
+
+@keyframes diceSpin {
+  0% { transform: rotate(0deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1.2); }
+}
+
+.secondary-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sub-action-btn {
+  font-family: var(--font-family-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid #E2E8F0;
+  background-color: #FFFFFF;
+  color: #4A5568;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.sub-action-btn:hover {
+  background-color: #EDF2F7;
+  color: #1A202C;
+  border-color: #CBD5E0;
+}
+
+/* 4. 팁 배너 */
+.tip-banner {
+  background-color: #F0F9FF;
+  border: 1.5px solid #BAE6FD;
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: #0369A1;
+}
+
+.tip-badge {
+  background-color: #E0F2FE;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.82rem;
+  border: 1px solid #7DD3FC;
+}
+
+/* 5. 역할 카드 그리드 (20개 카드 배치) */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-action-cluster {
+    align-items: stretch;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 개별 학생 역할 카드 디자인 */
+.student-card {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-subtle);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.student-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.student-card.theme-mint {
+  background-color: #F4FAF8;
+  border-color: #A3E4D7;
+}
+.student-card.theme-sun {
+  background-color: #FEFCF5;
+  border-color: #F9E79F;
+}
+.student-card.theme-sky {
+  background-color: #F4F9FD;
+  border-color: #AED6F1;
+}
+.student-card.theme-peach {
+  background-color: #FDF7F4;
+  border-color: #F5CBA7;
+}
+.student-card.theme-lavender {
+  background-color: #FAF5FC;
+  border-color: #D7BDE2;
+}
+.student-card.theme-coral {
+  background-color: #FDF5F5;
+  border-color: #FADBD8;
+}
+
+/* 카드 맞바꾸기(Swap) 선택 시 강조 효과 */
+.student-card.swap-selected {
+  outline: 3.5px solid #FF7675;
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255, 118, 117, 0.5);
+}
+
+.card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.student-num-badge {
+  font-family: var(--font-family-display);
+  font-size: 0.95rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #4A5568;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.student-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.student-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1A202C;
+  letter-spacing: -0.01em;
+}
+
+/* 역할 메인 디스플레이 박스 */
+.role-badge-container {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s ease;
+}
+
+.role-badge-container.unassigned {
+  background: repeating-linear-gradient(
+    45deg,
+    #FAF9F6,
+    #FAF9F6 10px,
+    #F3EFEA 10px,
+    #F3EFEA 20px
+  );
+  border-style: dashed;
+}
+
+.role-emoji-large {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.role-name {
+  font-family: var(--font-family-display);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 4px;
+}
+
+.role-desc {
+  font-size: 0.84rem;
+  color: #718096;
+  line-height: 1.35;
+  word-break: keep-all;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 카드 하단 액션 버튼들 */
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.btn-card-swap {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #4A5568;
+  padding: 4px 9px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-card-swap:hover {
+  background-color: #FFFFFF;
+  border-color: #FF7675;
+  color: #D63031;
+}
+
+.card-status-indicator {
+  font-size: 0.76rem;
+  color: #27AE60;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-status-indicator.unassigned {
+  color: #95A5A6;
+}
+
+/* 애니메이션: 배정 시 팝업 회전 */
+@keyframes cardPop {
+  0% { transform: scale(0.9) rotate(-2deg); opacity: 0.7; }
+  50% { transform: scale(1.05) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.student-card.pop-animate {
+  animation: cardPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* 6. 모달 공통 레이아웃 */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(45, 52, 54, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.modal-backdrop.active .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.modal-box-large {
+  max-width: 760px;
+}
+
+.modal-header {
+  padding: 18px 24px;
+  border-bottom: 1.5px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-header-icon {
+  font-size: 1.5rem;
+}
+
+.modal-header h3 {
+  font-family: var(--font-family-display);
+  font-size: 1.35rem;
+  color: #2D3748;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #A0AEC0;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  color: #2D3748;
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1.5px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: #FAF9F6;
+}
+
+/* 폼 요소 및 카드 */
+.callout-card {
+  background-color: #EBF8FF;
+  border: 1.5px solid #BEE3F8;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.callout-title {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #2B6CB0;
+  margin-bottom: 6px;
+}
+
+.callout-text {
+  font-size: 0.88rem;
+  color: #2D3748;
+  line-height: 1.5;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #CBD5E0;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-body);
+  font-size: 0.94rem;
+  color: #1A202C;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #FF7675;
+  box-shadow: 0 0 0 3px rgba(255, 118, 117, 0.2);
+}
+
+.input-with-button {
+  display: flex;
+  gap: 8px;
+}
+
+.input-with-button input {
+  flex: 1;
+}
+
+.input-hint {
+  font-size: 0.8rem;
+  color: #718096;
+  margin-top: 6px;
+}
+
+.modal-action-row {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+
+.btn-action-highlight {
+  flex: 1;
+  min-width: 200px;
+  background-color: #E8F8F5;
+  border: 2px solid #A3E4D7;
+  color: #0E6251;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-action-highlight:hover {
+  background-color: #D1F2EB;
+  border-color: #76D7C4;
+  transform: translateY(-1px);
+}
+
+.code-details {
+  margin-top: 18px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  background-color: #F8FAFC;
+}
+
+.code-summary {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #334155;
+  cursor: pointer;
+}
+
+.code-box-wrap {
+  margin-top: 10px;
+  position: relative;
+}
+
+.code-box-wrap pre {
+  background-color: #1E293B;
+  color: #F8FAFC;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.78rem;
+  overflow-x: auto;
+  max-height: 220px;
+}
+
+.btn-copy-code {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #334155;
+  color: #FFFFFF;
+  border: 1px solid #475569;
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-copy-code:hover {
+  background-color: #475569;
+}
+
+/* 관리 모달 탭 */
+.modal-tabs {
+  display: flex;
+  border-bottom: 2px solid #EDF2F7;
+  margin-bottom: 18px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 10px 18px;
+  font-family: var(--font-family-body);
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #2D3748;
+}
+
+.tab-btn.active {
+  color: #FF7675;
+  border-bottom-color: #FF7675;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-description {
+  font-size: 0.88rem;
+  color: #718096;
+  margin-bottom: 12px;
+}
+
+.tab-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.text-counter {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #4A5568;
+}
+
+/* 버튼 스타일 모음 */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  border: none;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: #EDF2F7;
+  color: #4A5568;
+  border: 1.5px solid #CBD5E0;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #E2E8F0;
+  color: #1A202C;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.82rem;
+}
+
+/* 7. 두근두근 뽑기 모드 (전자칠판/TV 발표용) */
+.modal-presentation {
+  max-width: 680px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF9F2 100%);
+  text-align: center;
+}
+
+.presentation-body {
+  padding: 36px 24px;
+}
+
+.presentation-card-wrap {
+  background-color: #FFFFFF;
+  border: 3px solid #FFE4D6;
+  border-radius: var(--radius-lg);
+  padding: 32px 20px;
+  box-shadow: 0 16px 32px rgba(255, 118, 117, 0.15);
+  margin-bottom: 24px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.pres-number-badge {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  font-family: var(--font-family-display);
+  font-size: 1.1rem;
+  color: #FF7675;
+  background-color: #FFF2F2;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.pres-student-name {
+  font-family: var(--font-family-display);
+  font-size: 2.3rem;
+  color: #2D3748;
+  margin-bottom: 14px;
+}
+
+.pres-question-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pres-mystery {
+  font-size: 4rem;
+  animation: pulseMystery 1.5s infinite;
+}
+
+@keyframes pulseMystery {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) rotate(5deg); }
+}
+
+.pres-question-box p {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #718096;
+}
+
+.pres-revealed-role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: cardPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pres-revealed-role.hidden,
+.pres-question-box.hidden {
+  display: none !important;
+}
+
+.pres-role-emoji {
+  font-size: 4.8rem;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.pres-role-title {
+  font-family: var(--font-family-display);
+  font-size: 2.1rem;
+  color: #D63031;
+  margin-bottom: 6px;
+}
+
+.pres-role-desc {
+  font-size: 1.05rem;
+  color: #4A5568;
+}
+
+.presentation-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.pres-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #EDF2F7;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.pres-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF7675, #74B9FF);
+  transition: width 0.3s ease;
+}
+
+.pres-progress-text {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #718096;
+}
+
+/* 8. 토스트 알림 */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background-color: #2D3748;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 200;
+  transition: all 0.25s ease;
+}
+
+.toast.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(30px);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   9. 교실 게시판 부착용 A4 인쇄 스타일 (@media print)
+   ========================================================================== */
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 8mm 10mm;
+  }
+
+  /* 화면 전용 UI 요소 완벽 숨김 */
+  .no-print,
+  .app-header,
+  .main-content,
+  .modal-backdrop,
+  .toast {
+    display: none !important;
+  }
+
+  /* 인쇄 전용 컨테이너 표시 */
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 9pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  .a4-print-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .print-header {
+    border-bottom: 2pt solid #2D3748;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+
+  .print-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4px;
+  }
+
+  .print-title {
+    font-family: var(--font-family-display);
+    font-size: 18pt;
+    font-weight: 700;
+    color: #1A202C;
+    margin: 0;
+  }
+
+  .print-meta-box {
+    display: flex;
+    gap: 16px;
+    font-size: 10pt;
+  }
+
+  .print-meta-item strong {
+    border-bottom: 1px solid #718096;
+    padding: 0 4px;
+  }
+
+  .print-slogan {
+    font-size: 9pt;
+    color: #4A5568;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* 20명을 A4 1장에 딱 맞게 콤팩트하게 출력하는 2단/1단 테이블 */
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+  }
+
+  .print-table th,
+  .print-table td {
+    border: 1pt solid #4A5568;
+    padding: 4px 6px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .print-table th {
+    background-color: #EDF2F7 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-size: 9.5pt;
+    font-weight: 700;
+  }
+
+  .print-table td:nth-child(4) {
+    text-align: left;
+    padding-left: 8px;
+    font-size: 8.5pt;
+  }
+
+  .print-table td:nth-child(3) {
+    font-weight: 700;
+  }
+
+  .print-table tr:nth-child(even) {
+    background-color: #F8FAFC !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .stamp-box {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 1pt dashed #A0AEC0;
+    border-radius: 4px;
+  }
+
+  .print-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: #718096;
+    border-top: 1pt solid #CBD5E0;
+    padding-top: 4px;
+  }
+}
