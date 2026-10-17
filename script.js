@@ -867,17 +867,22 @@ async function handleSheetExport() {
 
   showToast("💾 구글 스프레드시트로 저장 요청 중...");
   try {
-    await fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
+      mode: "cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(payload)
     });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const result = await response.json();
+    if (result.status !== "success") {
+      throw new Error(result.message || "구글 시트에서 저장을 확인하지 못했습니다.");
+    }
     sound.playPop();
-    showToast("✅ 구글 스프레드시트에 배정 결과를 성공적으로 전송했습니다!");
+    showToast(`✅ 구글 시트에 ${result.savedRows}명의 배정 결과를 저장했습니다!`);
   } catch (err) {
     console.error("Sheet export error:", err);
-    showToast("⚠️ 전송 중 오류가 발생했습니다. Apps Script URL을 확인해 주세요.");
+    showToast(`⚠️ 저장 확인 실패: ${err.message}. 시트의 실제 기록을 확인한 뒤 다시 시도해 주세요.`);
   }
 }
 
@@ -1168,3 +1173,4 @@ if (document.readyState === "loading") {
 } else {
   initApp();
 }
+
